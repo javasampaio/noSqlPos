@@ -5,4 +5,3 @@ author: sampaio
 
 dependencies:
   redis: ^1.2.1
-  dartis: ^0.3.0
