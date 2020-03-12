@@ -217,3 +217,85 @@ db.getCollection('italians').aggregate([
   
 
 ![image](exercise2/num20.png)  
+  
+  
+  
+## Exercício 3 - Stockbrokers  
+  
+### 1. Liste as ações com profit acima de 0.5 (limite a 10 o resultado)  
+  
+##### db.getCollection('stocks').find({"Profit Margin": {$gt: 0.5}}).limit(10)  
+  
+![image](exercise3/num1.png)   
+  
+  
+### 2. Liste as ações com perdas (limite a 10 novamente)  
+  
+##### db.getCollection('stocks').find({"Profit Margin": {$lt: 0}}).limit(10)  
+  
+![image](exercise3/num2.png)    
+  
+  
+### 3. Liste as 10 ações mais rentáveis   
+  
+
+##### db.getCollection('stocks').find({}).sort({"Profit Margin": -1}).limit(10)  
+  
+![image](exercise3/num3.png)  
+  
+    
+### 4. Qual foi o setor mais rentável?  
+  
+##### Basic Materials
+  
+### 5. Ordene as ações pelo profit e usando um cursor, liste as ações.  
+  
+var cursor = db.getCollection('stocks').find({}).sort({"Profit Margin": -1});
+cursor.forEach(function(x){
+    print(x)
+});   
+  
+![image](exercise3/num5.png) 
+  
+   
+### 6. Renomeie o campo “Profit Margin” para apenas “profit”.  
+  
+##### db.getCollection('stocks').updateMany({}, {$rename: {"Profit Margin":"profit"}})  
+  
+![image](exercise3/num6.png)  
+   
+  
+### 7. Agora liste apenas a empresa e seu respectivo resultado 
+ 
+##### db.getCollection('stocks').find({}, {"Company":1, "profit":1, _id:0}) 
+  
+![image](exercise3/num7.png)  
+   
+  
+### 8. Analise as ações. É uma bola de cristal na sua mão... Quais as três ações você investiria?  
+  
+##### BPT, CACB, ROYT
+  
+### 9. Liste as ações agrupadas por setor
+
+##### db.getCollection('stocks').aggregate([{$group: {_id: {sector: '$Sector'}}}])  
+  
+![image](exercise3/num9.png)  
+  
+  
+  
+## Exercício 3 – Fraude na Enron!
+  
+  
+1. Liste as pessoas que enviaram e-mails (de forma distinta, ou seja, sem repetir). Quantas pessoas são? 
+  
+##### db.getCollection('stocks').distinct("sender")
+  
+![image](exercise3/num10.png)  
+   
+  
+2. Contabilize quantos e-mails tem a palavra “fraud”  
+  
+##### db.getCollection('stocks').count({"text": {$regex: ".*fraud.*"}}) 
+  
+![image](exercise3/num11.png)
