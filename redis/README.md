@@ -7,7 +7,15 @@ Redis Download:
 [Redis](https://redis.io/download)
 
 Command for run dart file:
-dart /bin/main.dart
+dart /bin/main.dart  
+  
+  
+Log:  
+![image](img.png)  
+  
+  
+Redis:  
+![image](keys_redis.png)
 
 
 
