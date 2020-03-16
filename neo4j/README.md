@@ -275,7 +275,7 @@
 ### 10.5  
 ##### MATCH(m:Movie) WHERE m.title = 'Spider Man' DETACH DELETE m
   
-### 9.6  
+### 10.6  
 ##### MATCH(p:Person)-[rel]-(m:Movie) WHERE m.title = 'Spider Man' RETURN p, rel, m
   
 
